@@ -55,8 +55,7 @@ import org.json.*;
  */
 @Path("/Customers/{username}")
 public class Customers {
-    public static final String CLICHED_MESSAGE = "is Here";
-
+   
     @GET
     @Produces("text/plain")
     /*public String getHello() {
@@ -65,7 +64,14 @@ public class Customers {
 	}*/
 	  public String getUser(@PathParam("username") String userName) {
 		Customer reqCust = CustomerStore.getCustomer(userName);
+		if(reqCust !=null)
+		{
 		return reqCust.toJson();
+		}
+		else
+		{
+		return "No Such User";
+		}
     }
 	@PUT
 	public Response putCustomer(String content,@PathParam("username") String userName)

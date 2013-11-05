@@ -66,21 +66,38 @@ public class Customers {
 		Customer reqCust = CustomerStore.getCustomer(userName);
 		if(reqCust !=null)
 		{
-		return reqCust.toJson();
+			return reqCust.toJson();
 		}
 		else
 		{
-		return "No Such User";
+			return "No Such User";
 		}
     }
 	@PUT
 	public Response putCustomer(String content,@PathParam("username") String userName)
 	{
+		String firstName = null;
+		String lastName = null;
+		String phoneNumber = null;
+		String eMail = null;
+		
 		JSONObject jsonObj = new JSONObject(content);
-		String firstName = jsonObj.getString("firstName");
-		String lastName = jsonObj.getString("lastName");
-		String phoneNumber = jsonObj.getString("phoneNumber");
-		String eMail = jsonObj.getString("eMail");
+		if(!jsonObj.isNull("firstName"))
+		{
+			firstName = jsonObj.getString("firstName");
+		}
+		if(!jsonObj.isNull("lastName"))
+		{
+			lastName = jsonObj.getString("lastName");
+		}
+		if(!jsonObj.isNull("phoneNumber"))
+		{
+		 phoneNumber = jsonObj.getString("phoneNumber");
+		}
+		if(!jsonObj.isNull("eMail"))
+		{
+			eMail = jsonObj.getString("eMail");
+		}
 		Customer reqCust = new Customer(firstName,lastName,phoneNumber,eMail,userName);
 		CustomerStore.processCustomer(reqCust);
 		return Response.ok("Recieved:"+jsonObj.get("firstName")).build();

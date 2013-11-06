@@ -62,7 +62,7 @@ public class App {
             System.out.println("\"Hello World\" Jersey Example App");
 
             final ResourceConfig resourceConfig = new ResourceConfig(CustomerRS.class);
-			resourceConfig.register(new MyBinder());
+			resourceConfig.register(new AppBinder());
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig);
 			
 			

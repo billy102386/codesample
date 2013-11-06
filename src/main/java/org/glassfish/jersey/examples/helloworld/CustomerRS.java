@@ -63,9 +63,8 @@ public class CustomerRS {
         Customer reqCust = customerStore.getCustomer(userName);
         if (reqCust != null) {
             return reqCust.toJson();
-        } else {
-            return "No Such User";
         }
+        return "No Such User";
     }
 
     @PUT
@@ -89,9 +88,8 @@ public class CustomerRS {
         boolean success = customerStore.patchCustomer(reqCust);
         if (success) {
             return Response.ok().build();
-        } else {
-            return Response.status(404).build();
         }
+        return Response.status(404).build();
     }
 
     private Customer parseRequest(String content, String userName) {

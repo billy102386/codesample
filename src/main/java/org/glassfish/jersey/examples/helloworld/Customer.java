@@ -8,12 +8,12 @@ public class Customer
 	private String eMail;
 	private String userName;
 
-	public Customer(String inFirstName,String inLastName,String inPhoneNumber,String inEMail,String inUserName)
+	public Customer(String inFirstName,String inLastName,String inPhoneNumber,String inEmail,String inUserName)
 	{
 		firstName = inFirstName;
 		lastName = inLastName;
 		phoneNumber = inPhoneNumber;
-		eMail = inEMail;
+		eMail = inEmail;
 		userName=inUserName;
 	}
 	public String toJson()
@@ -45,11 +45,11 @@ public class Customer
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String geteMail() {
+	public String getEmail() {
 		return eMail;
 	}
 
-	public void seteMail(String eMail) {
+	public void setEmail(String eMail) {
 		this.eMail = eMail;
 	}
 

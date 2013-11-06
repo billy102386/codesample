@@ -54,8 +54,9 @@ import org.glassfish.grizzly.http.server.HttpServer;
  */
 public class App {
 
-    private static final URI BASE_URI = URI.create("http://localhost:8080/Customer/");
-    public static final String ROOT_PATH = "CustomerRS";
+    public static final String ROOT_PATH = "Customer";
+    private static final URI BASE_URI = URI.create("http://localhost:8080/" + ROOT_PATH + "/");
+    
 
     public static void main(String[] args) {
         try {
@@ -67,8 +68,8 @@ public class App {
 			
 			
 
-            System.out.println(String.format("Application started.\nTry out %s%s\nHit enter to stop it...",
-                    BASE_URI, ROOT_PATH));
+            System.out.println(String.format("Application started.\nTry out %s\nHit enter to stop it...",
+                    BASE_URI));
             System.in.read();
             server.stop();
         } catch (IOException ex) {
